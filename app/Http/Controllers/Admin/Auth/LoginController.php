@@ -87,6 +87,7 @@ class LoginController extends BaseController
         }
 
         $admin = $this->admin->where('email', $request['email'])->first();
+        dd($admin);
 
         if (isset($admin) && in_array($request['role'], [UserRole::ADMIN, UserRole::EMPLOYEE]) && $admin->status) {
             if ($this->adminService->isLoginSuccessful($request['email'], $request['password'], $request['remember'])) {

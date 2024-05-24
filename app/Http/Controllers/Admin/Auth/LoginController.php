@@ -90,12 +90,9 @@ class LoginController extends BaseController
 
         if (isset($admin) && in_array($request['role'], [UserRole::ADMIN, UserRole::EMPLOYEE]) && $admin->status) {
             if ($this->adminService->isLoginSuccessful($request['email'], $request['password'], $request['remember'])) {
-                dd("hello");
                 return redirect()->route('admin.dashboard');
             }
         }
-        dd($request['role'],$request['email'],$request['password']);
-
         return redirect()->back()->withInput($request->only('email', 'remember'))
             ->withErrors([translate('credentials does not match or your account has been suspended')]);
     }

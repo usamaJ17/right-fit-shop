@@ -523,45 +523,45 @@
                             </li>
                         @endif
 
-                        @if(Helpers::module_permission_check('system_settings'))
-                            @if (count(config('get_theme_routes')) > 0)
-                                <li class="nav-item {{(Request::is('admin/banner*') || (Request::is('admin/coupon*')) || (Request::is('admin/notification*')) || (Request::is('admin/deal*')))?'scroll-here':''}}">
-                                    <small class="nav-subtitle"
-                                           title="">{{ config('get_theme_routes')['name'] }} {{translate('Menu')}}</small>
-                                    <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                                </li>
-                                @foreach (config('get_theme_routes')['route_list'] as $route)
-                                    @if(isset($route['module_permission']) && Helpers::module_permission_check($route['module_permission']))
-                                    <li class="navbar-vertical-aside-has-menu {{ (Request::is($route['path']) || Request::is($route['path'].'*')) ? 'active':''}} @foreach ($route['route_list'] as $sub_route){{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'active':''}}@endforeach">
-                                        <a class="js-navbar-vertical-aside-menu-link nav-link {{ count($route['route_list']) > 0 ? 'nav-link-toggle':'' }}"
-                                           href="{{ count($route['route_list']) > 0 ? 'javascript:':$route['url'] }}"
-                                           title="{{translate('offers_&_Deals')}}">
-                                            {!! $route['icon'] !!}
-                                            <span
-                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate($route['name'])}}</span>
-                                        </a>
+{{--                        @if(Helpers::module_permission_check('system_settings'))--}}
+{{--                            @if (count(config('get_theme_routes')) > 0)--}}
+{{--                                <li class="nav-item {{(Request::is('admin/banner*') || (Request::is('admin/coupon*')) || (Request::is('admin/notification*')) || (Request::is('admin/deal*')))?'scroll-here':''}}">--}}
+{{--                                    <small class="nav-subtitle"--}}
+{{--                                           title="">{{ config('get_theme_routes')['name'] }} {{translate('Menu')}}</small>--}}
+{{--                                    <small class="tio-more-horizontal nav-subtitle-replacer"></small>--}}
+{{--                                </li>--}}
+{{--                                @foreach (config('get_theme_routes')['route_list'] as $route)--}}
+{{--                                    @if(isset($route['module_permission']) && Helpers::module_permission_check($route['module_permission']))--}}
+{{--                                    <li class="navbar-vertical-aside-has-menu {{ (Request::is($route['path']) || Request::is($route['path'].'*')) ? 'active':''}} @foreach ($route['route_list'] as $sub_route){{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'active':''}}@endforeach">--}}
+{{--                                        <a class="js-navbar-vertical-aside-menu-link nav-link {{ count($route['route_list']) > 0 ? 'nav-link-toggle':'' }}"--}}
+{{--                                           href="{{ count($route['route_list']) > 0 ? 'javascript:':$route['url'] }}"--}}
+{{--                                           title="{{translate('offers_&_Deals')}}">--}}
+{{--                                            {!! $route['icon'] !!}--}}
+{{--                                            <span--}}
+{{--                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate($route['name'])}}</span>--}}
+{{--                                        </a>--}}
 
-                                        @if (count($route['route_list']) > 0)
-                                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                                style="display: @foreach ($route['route_list'] as $sub_route){{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'block':'none'}}@endforeach">
-                                                @foreach ($route['route_list'] as $sub_route)
-                                                    <li class="navbar-vertical-aside-has-menu {{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'active':''}}">
-                                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                                           href="{{$sub_route['url']}}"
-                                                           title="{{ translate($sub_route['name']) }}">
-                                                            <span class="tio-circle nav-indicator-icon"></span>
-                                                            <span
-                                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate($sub_route['name']) }}</span>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endif
+{{--                                        @if (count($route['route_list']) > 0)--}}
+{{--                                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
+{{--                                                style="display: @foreach ($route['route_list'] as $sub_route){{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'block':'none'}}@endforeach">--}}
+{{--                                                @foreach ($route['route_list'] as $sub_route)--}}
+{{--                                                    <li class="navbar-vertical-aside-has-menu {{ (Request::is($sub_route['path']) || Request::is($sub_route['path'].'*')) ? 'active':''}}">--}}
+{{--                                                        <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                                           href="{{$sub_route['url']}}"--}}
+{{--                                                           title="{{ translate($sub_route['name']) }}">--}}
+{{--                                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                                            <span--}}
+{{--                                                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate($sub_route['name']) }}</span>--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                @endforeach--}}
+{{--                                            </ul>--}}
+{{--                                        @endif--}}
+{{--                                    </li>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
                         @if(Helpers::module_permission_check('support_section'))
                             <li class="nav-item {{(Request::is('admin/support-ticket*') || Request::is('admin/contact*'))?'scroll-here':''}}">
                                 <small class="nav-subtitle"
@@ -879,213 +879,213 @@
                                 </a>
                             </li>
                         @endif
-                        @if(Helpers::module_permission_check('system_settings'))
-                            <li class="nav-item {{(
-                            Request::is('admin/business-settings/web-config') ||
-                            Request::is('admin/product-settings')||
-                            Request::is('admin/business-settings/'.SocialMedia::VIEW[URI]) ||
-                            Request::is('admin/business-settings/web-config/'.BusinessSettings::APP_SETTINGS[URI]) ||
-                            Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||
-                            Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||
-                            Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||
-                            Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||
-                            Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||
-                            Request::is('admin/business-settings/'.PushNotification::INDEX[URI]) ||
-                            Request::is('admin/business-settings/'.Mail::VIEW[URI])||
-                            Request::is('admin/business-settings/web-config/'.BusinessSettings::LOGIN_URL_SETUP[URI]) ||
-                            Request::is('admin/business-settings/web-config/'.DatabaseSetting::VIEW[URI]) ||
-                            Request::is('admin/business-settings/web-config/'.EnvironmentSettings::VIEW[URI]) ||
-                            Request::is('admin/business-settings/'.BusinessSettings::INDEX[URI]) ||
-                            Request::is('admin/business-settings/'.BusinessSettings::COOKIE_SETTINGS[URI]) ||
-                            Request::is('admin/business-settings/'.BusinessSettings::OTP_SETUP[URI]) ||
-                            Request::is('admin/system-settings/'.SoftwareUpdate::VIEW[URI]) ||
-                            Request::is('admin/business-settings/web-config/theme/'.ThemeSetup::VIEW[URI]) ||
-                            Request::is('admin/business-settings/shipping-method/'.ShippingMethod::UPDATE[URI].'*') ||
-                            Request::is('admin/business-settings/shipping-method/'.ShippingMethod::INDEX[URI]) ||
-                            Request::is('admin/business-settings/delivery-restriction') ||
-                            Request::is('admin/addon')) ? 'scroll-here' : '' }}">
+{{--                        @if(Helpers::module_permission_check('system_settings'))--}}
+{{--                            <li class="nav-item {{(--}}
+{{--                            Request::is('admin/business-settings/web-config') ||--}}
+{{--                            Request::is('admin/product-settings')||--}}
+{{--                            Request::is('admin/business-settings/'.SocialMedia::VIEW[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/web-config/'.BusinessSettings::APP_SETTINGS[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||--}}
+{{--                            Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||--}}
+{{--                            Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.PushNotification::INDEX[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.Mail::VIEW[URI])||--}}
+{{--                            Request::is('admin/business-settings/web-config/'.BusinessSettings::LOGIN_URL_SETUP[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/web-config/'.DatabaseSetting::VIEW[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/web-config/'.EnvironmentSettings::VIEW[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.BusinessSettings::INDEX[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.BusinessSettings::COOKIE_SETTINGS[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/'.BusinessSettings::OTP_SETUP[URI]) ||--}}
+{{--                            Request::is('admin/system-settings/'.SoftwareUpdate::VIEW[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/web-config/theme/'.ThemeSetup::VIEW[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/shipping-method/'.ShippingMethod::UPDATE[URI].'*') ||--}}
+{{--                            Request::is('admin/business-settings/shipping-method/'.ShippingMethod::INDEX[URI]) ||--}}
+{{--                            Request::is('admin/business-settings/delivery-restriction') ||--}}
+{{--                            Request::is('admin/addon')) ? 'scroll-here' : '' }}">--}}
 
-                                <small class="nav-subtitle"
-                                       title="">{{translate('system_Settings')}}</small>
-                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                            </li>
+{{--                                <small class="nav-subtitle"--}}
+{{--                                       title="">{{translate('system_Settings')}}</small>--}}
+{{--                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>--}}
+{{--                            </li>--}}
 
-                            <li class="navbar-vertical-aside-has-menu
-                            {{(
-                                Request::is('admin/business-settings/web-config') ||
-                                Request::is('admin/product-settings')||
-                                Request::is('admin/product-settings/'.InhouseShop::VIEW[URI]) ||
-                                Request::is('admin/business-settings/seller-settings') ||
-                                Request::is('admin/customer/'.Customer::SETTINGS[URI]) ||
-                                Request::is('admin/business-settings/delivery-man-settings') ||
-                                Request::is('admin/business-settings/shipping-method/'.ShippingMethod::UPDATE[URI].'*') ||
-                                Request::is('admin/business-settings/shipping-method/'.ShippingMethod::INDEX[URI]) ||
-                                Request::is('admin/business-settings/order-settings/index') ||
-                                Request::is('admin/'.BusinessSettings::PRODUCT_SETTINGS[URI]) ||
-                                Request::is('admin/business-settings/delivery-restriction'))?'active':''}}">
+{{--                            <li class="navbar-vertical-aside-has-menu--}}
+{{--                            {{(--}}
+{{--                                Request::is('admin/business-settings/web-config') ||--}}
+{{--                                Request::is('admin/product-settings')||--}}
+{{--                                Request::is('admin/product-settings/'.InhouseShop::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/seller-settings') ||--}}
+{{--                                Request::is('admin/customer/'.Customer::SETTINGS[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/delivery-man-settings') ||--}}
+{{--                                Request::is('admin/business-settings/shipping-method/'.ShippingMethod::UPDATE[URI].'*') ||--}}
+{{--                                Request::is('admin/business-settings/shipping-method/'.ShippingMethod::INDEX[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/order-settings/index') ||--}}
+{{--                                Request::is('admin/'.BusinessSettings::PRODUCT_SETTINGS[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/delivery-restriction'))?'active':''}}">--}}
 
-                                <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                   href="{{route('admin.business-settings.web-config.index')}}"
-                                   title="{{translate('business_Setup')}}">
-                                    <i class="tio-globe nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                {{translate('business_Setup')}}
-                            </span>
-                                </a>
-                            </li>
+{{--                                <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                   href="{{route('admin.business-settings.web-config.index')}}"--}}
+{{--                                   title="{{translate('business_Setup')}}">--}}
+{{--                                    <i class="tio-globe nav-icon"></i>--}}
+{{--                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                {{translate('business_Setup')}}--}}
+{{--                            </span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
-                            <li class="navbar-vertical-aside-has-menu {{(
-                                Request::is('admin/business-settings/mail'.Mail::VIEW[URI]) ||
-                                Request::is('admin/business-settings/offline-payment-method/'.OfflinePaymentMethod::INDEX[URI]) ||
-                                Request::is('admin/business-settings/offline-payment-method/'.OfflinePaymentMethod::ADD[URI]) ||
-                                Request::is('admin/business-settings/'.SMSModule::VIEW[URI]) ||
-                                Request::is('admin/business-settings/'.Recaptcha::VIEW[URI]) ||
-                                Request::is('admin/social-login/'.SocialLoginSettings::VIEW[URI]) ||
-                                Request::is('admin/social-media-chat/'.SocialMediaChat::VIEW[URI]) ||
-                                Request::is('admin/business-settings/'.GoogleMapAPI::VIEW[URI]) ||
-                                Request::is('admin/business-settings/payment-method') ||
-                                Request::is('admin/business-settings/payment-method/offline-payment*'))?'active':''}}">
-                                <a class="nav-link " href="{{route('admin.business-settings.payment-method.index')}}"
-                                   title="{{translate('3rd_Party')}}">
-                                    <span class="tio-key nav-icon"></span>
-                                    <span class="text-truncate">{{translate('3rd_Party')}}</span>
-                                </a>
-                            </li>
+{{--                            <li class="navbar-vertical-aside-has-menu {{(--}}
+{{--                                Request::is('admin/business-settings/mail'.Mail::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/offline-payment-method/'.OfflinePaymentMethod::INDEX[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/offline-payment-method/'.OfflinePaymentMethod::ADD[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.SMSModule::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.Recaptcha::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/social-login/'.SocialLoginSettings::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/social-media-chat/'.SocialMediaChat::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.GoogleMapAPI::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/payment-method') ||--}}
+{{--                                Request::is('admin/business-settings/payment-method/offline-payment*'))?'active':''}}">--}}
+{{--                                <a class="nav-link " href="{{route('admin.business-settings.payment-method.index')}}"--}}
+{{--                                   title="{{translate('3rd_Party')}}">--}}
+{{--                                    <span class="tio-key nav-icon"></span>--}}
+{{--                                    <span class="text-truncate">{{translate('3rd_Party')}}</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
-                            <li class="navbar-vertical-aside-has-menu {{ (
-                                Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||
-                                Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||
-                                Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||
-                                Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||
-                                Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||
-                                Request::is('admin/business-settings/'.FeaturesSection::VIEW[URI]) ||
-                                Request::is('admin/business-settings/'.FeaturesSection::COMPANY_RELIABILITY[URI])) ?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                   href="javascript:" title="{{translate('Pages_&_Media')}}">
-                                    <i class="tio-pages-outlined nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                {{translate('Pages_&_Media')}}
-                            </span>
-                                </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/business-settings/terms-condition') || Request::is('admin/business-settings/page*') || Request::is('admin/business-settings/privacy-policy') || Request::is('admin/business-settings/about-us') || Request::is('admin/helpTopic/list') || Request::is('admin/business-settings/social-media') || Request::is('admin/file-manager*') || Request::is('admin/business-settings/features-section')?'block':'none'}}">
-                                    <li class="nav-item {{(
-                                        Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||
-                                        Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||
-                                        Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||
-                                        Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||
-                                        Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||
-                                        Request::is('admin/business-settings/'.FeaturesSection::VIEW[URI]) ||
-                                        Request::is('admin/business-settings/'.FeaturesSection::COMPANY_RELIABILITY[URI]))?'active':''}}">
-                                        <a class="nav-link" href="{{route('admin.business-settings.terms-condition')}}"
-                                           title="{{translate('pages')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">
-                                      {{translate('pages')}}
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/'.SocialMedia::VIEW[URI])?'active':''}}">
-                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                           href="{{route('admin.business-settings.social-media')}}"
-                                           title="{{translate('social_Media_Links')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{translate('social_Media_Links')}}
-                                </span>
-                                        </a>
-                                    </li>
+{{--                            <li class="navbar-vertical-aside-has-menu {{ (--}}
+{{--                                Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||--}}
+{{--                                Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||--}}
+{{--                                Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.FeaturesSection::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.FeaturesSection::COMPANY_RELIABILITY[URI])) ?'active':''}}">--}}
+{{--                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"--}}
+{{--                                   href="javascript:" title="{{translate('Pages_&_Media')}}">--}}
+{{--                                    <i class="tio-pages-outlined nav-icon"></i>--}}
+{{--                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                {{translate('Pages_&_Media')}}--}}
+{{--                            </span>--}}
+{{--                                </a>--}}
+{{--                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
+{{--                                    style="display: {{Request::is('admin/business-settings/terms-condition') || Request::is('admin/business-settings/page*') || Request::is('admin/business-settings/privacy-policy') || Request::is('admin/business-settings/about-us') || Request::is('admin/helpTopic/list') || Request::is('admin/business-settings/social-media') || Request::is('admin/file-manager*') || Request::is('admin/business-settings/features-section')?'block':'none'}}">--}}
+{{--                                    <li class="nav-item {{(--}}
+{{--                                        Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||--}}
+{{--                                        Request::is('admin/business-settings/'.Pages::VIEW[URI].'*') ||--}}
+{{--                                        Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ||--}}
+{{--                                        Request::is('admin/business-settings/'.Pages::ABOUT_US[URI]) ||--}}
+{{--                                        Request::is('admin/helpTopic/'.HelpTopic::LIST[URI]) ||--}}
+{{--                                        Request::is('admin/business-settings/'.FeaturesSection::VIEW[URI]) ||--}}
+{{--                                        Request::is('admin/business-settings/'.FeaturesSection::COMPANY_RELIABILITY[URI]))?'active':''}}">--}}
+{{--                                        <a class="nav-link" href="{{route('admin.business-settings.terms-condition')}}"--}}
+{{--                                           title="{{translate('pages')}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span class="text-truncate">--}}
+{{--                                      {{translate('pages')}}--}}
+{{--                                    </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/'.SocialMedia::VIEW[URI])?'active':''}}">--}}
+{{--                                        <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                           href="{{route('admin.business-settings.social-media')}}"--}}
+{{--                                           title="{{translate('social_Media_Links')}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                    {{translate('social_Media_Links')}}--}}
+{{--                                </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
 
-                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/file-manager*')?'active':''}}">
-                                        <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                           href="{{route('admin.file-manager.index')}}"
-                                           title="{{translate('gallery')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        {{translate('gallery')}}
-                                    </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+{{--                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/file-manager*')?'active':''}}">--}}
+{{--                                        <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                           href="{{route('admin.file-manager.index')}}"--}}
+{{--                                           title="{{translate('gallery')}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                        {{translate('gallery')}}--}}
+{{--                                    </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
 
-                            <li class="navbar-vertical-aside-has-menu {{(
-                                Request::is('admin/business-settings/web-config/'.EnvironmentSettings::VIEW[URI]) ||
-                                Request::is('admin/business-settings/web-config/'.SiteMap::VIEW[URI]) ||
-                                Request::is('admin/business-settings/'.BusinessSettings::ANALYTICS_INDEX[URI]) ||
-                                Request::is('admin/currency/'.Currency::LIST[URI]) ||
-                                Request::is('admin/currency/'.Currency::UPDATE[URI].'*') ||
-                                Request::is('admin/business-settings/web-config/'.DatabaseSetting::VIEW[URI]) ||
-                                Request::is('admin/business-settings/language*') ||
-                                Request::is('admin/business-settings/web-config/theme/'.ThemeSetup::VIEW[URI])  ||
-                                Request::is('admin/business-settings/web-config/'.BusinessSettings::LOGIN_URL_SETUP[URI])  ||
-                                Request::is('admin/system-settings/'.SoftwareUpdate::VIEW[URI]) ||
-                                Request::is('admin/business-settings/'.BusinessSettings::COOKIE_SETTINGS[URI]) ||
-                                Request::is('admin/business-settings/'.BusinessSettings::OTP_SETUP[URI]) ||
-                                Request::is('admin/business-settings/web-config/'.BusinessSettings::APP_SETTINGS[URI]) ||
-                                Request::is('admin/addon'))?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                   title="{{translate('system_Setup')}}"
-                                   href="{{route('admin.business-settings.web-config.environment-setup')}}">
-                                    <i class="tio-labels nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                {{translate('system_Setup')}}
-                            </span>
-                                </a>
-                            </li>
+{{--                            <li class="navbar-vertical-aside-has-menu {{(--}}
+{{--                                Request::is('admin/business-settings/web-config/'.EnvironmentSettings::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/web-config/'.SiteMap::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.BusinessSettings::ANALYTICS_INDEX[URI]) ||--}}
+{{--                                Request::is('admin/currency/'.Currency::LIST[URI]) ||--}}
+{{--                                Request::is('admin/currency/'.Currency::UPDATE[URI].'*') ||--}}
+{{--                                Request::is('admin/business-settings/web-config/'.DatabaseSetting::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/language*') ||--}}
+{{--                                Request::is('admin/business-settings/web-config/theme/'.ThemeSetup::VIEW[URI])  ||--}}
+{{--                                Request::is('admin/business-settings/web-config/'.BusinessSettings::LOGIN_URL_SETUP[URI])  ||--}}
+{{--                                Request::is('admin/system-settings/'.SoftwareUpdate::VIEW[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.BusinessSettings::COOKIE_SETTINGS[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/'.BusinessSettings::OTP_SETUP[URI]) ||--}}
+{{--                                Request::is('admin/business-settings/web-config/'.BusinessSettings::APP_SETTINGS[URI]) ||--}}
+{{--                                Request::is('admin/addon'))?'active':''}}">--}}
+{{--                                <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                   title="{{translate('system_Setup')}}"--}}
+{{--                                   href="{{route('admin.business-settings.web-config.environment-setup')}}">--}}
+{{--                                    <i class="tio-labels nav-icon"></i>--}}
+{{--                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                {{translate('system_Setup')}}--}}
+{{--                            </span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
-                            <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/react')?'active':'' }}">
-                                <a class="nav-link " href="{{route('admin.react.index')}}"
-                                   title="{{translate('React_Site')}}">
-                                    <span class="tio-rear-window-defrost nav-icon"></span>
-                                    <span class="text-truncate">{{translate('React_Site')}}</span>
-                                </a>
-                            </li>
+{{--                            <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/react')?'active':'' }}">--}}
+{{--                                <a class="nav-link " href="{{route('admin.react.index')}}"--}}
+{{--                                   title="{{translate('React_Site')}}">--}}
+{{--                                    <span class="tio-rear-window-defrost nav-icon"></span>--}}
+{{--                                    <span class="text-truncate">{{translate('React_Site')}}</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
 
-                            @if(count(config('addon_admin_routes'))>0)
-                                <li class="navbar-vertical-aside-has-menu
-                                @foreach(config('addon_admin_routes') as $routes)
-                                    @foreach($routes as $route)
-                                        {{strstr(Request::url(), $route['path'])?'active':''}}
-                                    @endforeach
-                                @endforeach
-                            ">
-                                    <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                       href="javascript:" title="{{translate('Pages_&_Media')}}">
-                                        <i class="tio-puzzle nav-icon"></i>
-                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        {{translate('addon_Menus')}}
-                                    </span>
-                                    </a>
-                                    <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                        style="display:
-                                    @foreach(config('addon_admin_routes') as $routes)
-                                        @foreach($routes as $route)
-                                            {{ strstr(Request::url(), $route['path'])?'block':'' }}
-                                        @endforeach
-                                    @endforeach
-                                    ">
-                                        @foreach(config('addon_admin_routes') as $routes)
-                                            @foreach($routes as $route)
-                                                <li class="navbar-vertical-aside-has-menu {{strstr(Request::url(), $route['path'])?'active':''}}">
+{{--                            @if(count(config('addon_admin_routes'))>0)--}}
+{{--                                <li class="navbar-vertical-aside-has-menu--}}
+{{--                                @foreach(config('addon_admin_routes') as $routes)--}}
+{{--                                    @foreach($routes as $route)--}}
+{{--                                        {{strstr(Request::url(), $route['path'])?'active':''}}--}}
+{{--                                    @endforeach--}}
+{{--                                @endforeach--}}
+{{--                            ">--}}
+{{--                                    <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"--}}
+{{--                                       href="javascript:" title="{{translate('Pages_&_Media')}}">--}}
+{{--                                        <i class="tio-puzzle nav-icon"></i>--}}
+{{--                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                        {{translate('addon_Menus')}}--}}
+{{--                                    </span>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
+{{--                                        style="display:--}}
+{{--                                    @foreach(config('addon_admin_routes') as $routes)--}}
+{{--                                        @foreach($routes as $route)--}}
+{{--                                            {{ strstr(Request::url(), $route['path'])?'block':'' }}--}}
+{{--                                        @endforeach--}}
+{{--                                    @endforeach--}}
+{{--                                    ">--}}
+{{--                                        @foreach(config('addon_admin_routes') as $routes)--}}
+{{--                                            @foreach($routes as $route)--}}
+{{--                                                <li class="navbar-vertical-aside-has-menu {{strstr(Request::url(), $route['path'])?'active':''}}">--}}
 
-                                                    <a class="js-navbar-vertical-aside-menu-link nav-link"
-                                                       href="{{ $route['url'] }}"
-                                                       title="{{ translate($route['name']) }}">
-                                                        <span class="tio-circle nav-indicator-icon"></span>
-                                                        <span
-                                                            class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                                        {{ translate($route['name']) }}
-                                                    </span>
-                                                    </a>
+{{--                                                    <a class="js-navbar-vertical-aside-menu-link nav-link"--}}
+{{--                                                       href="{{ $route['url'] }}"--}}
+{{--                                                       title="{{ translate($route['name']) }}">--}}
+{{--                                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                                        <span--}}
+{{--                                                            class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                                        {{ translate($route['name']) }}--}}
+{{--                                                    </span>--}}
+{{--                                                    </a>--}}
 
-                                                </li>
-                                            @endforeach
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endif
-                        @endif
+{{--                                                </li>--}}
+{{--                                            @endforeach--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
                         <li class="nav-item pt-5">
                         </li>
                     </ul>

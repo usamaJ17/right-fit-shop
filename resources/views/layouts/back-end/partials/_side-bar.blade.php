@@ -360,56 +360,56 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::LIST[URI].'/seller*')||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                                   href="javascript:"
-                                   title="{{translate('vendor_Products')}}">
-                                    <i class="tio-airdrop nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        {{translate('vendor_Products')}}
-                                    </span>
-                                </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::LIST[URI].'/seller*')||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'block':''}}">
-                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'admin/products/'.\App\Enums\ViewPaths\Admin\Product::LIST[URI].'/seller?status=0')==1?'active':''}}">
-                                        <a class="nav-link"
-                                           title="{{translate('new_Products_Requests')}}"
-                                           href="{{route('admin.products.list',['seller', 'status'=>'0'])}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span
-                                                class="text-truncate">{{translate('new_Products_Requests')}} </span>
-                                        </a>
-                                    </li>
-                                    @if (getWebConfig(name: 'product_wise_shipping_cost_approval')==1)
-                                        <li class="nav-item {{Request::is('admin/products/'.Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">
-                                            <a class="nav-link" title="{{translate('product_Updated_Requests')}}"
-                                               href="{{route('admin.products.updated-product-list')}}">
-                                                <span class="tio-circle nav-indicator-icon"></span>
-                                                <span
-                                                    class="text-truncate">{{translate('product_Updated_Requests')}} </span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'/admin/products/'.Product::LIST[URI].'/seller?status=1')==1?'active':''}}">
-                                        <a class="nav-link"
-                                           title="{{translate('approved_Products')}}"
-                                           href="{{route('admin.products.list',['seller', 'status'=>'1'])}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span
-                                                class="text-truncate">{{translate('approved_Products')}}</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'/admin/products/'.Product::LIST[URI].'/seller?status=2')==1?'active':''}}">
-                                        <a class="nav-link"
-                                           title="{{translate('denied_Products')}}"
-                                           href="{{route('admin.products.list',['seller', 'status'=>'2'])}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span
-                                                class="text-truncate">{{translate('denied_Products')}}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+{{--                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::LIST[URI].'/seller*')||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">--}}
+{{--                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"--}}
+{{--                                   href="javascript:"--}}
+{{--                                   title="{{translate('vendor_Products')}}">--}}
+{{--                                    <i class="tio-airdrop nav-icon"></i>--}}
+{{--                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">--}}
+{{--                                        {{translate('vendor_Products')}}--}}
+{{--                                    </span>--}}
+{{--                                </a>--}}
+{{--                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
+{{--                                    style="display: {{Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::LIST[URI].'/seller*')||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'block':''}}">--}}
+{{--                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'admin/products/'.\App\Enums\ViewPaths\Admin\Product::LIST[URI].'/seller?status=0')==1?'active':''}}">--}}
+{{--                                        <a class="nav-link"--}}
+{{--                                           title="{{translate('new_Products_Requests')}}"--}}
+{{--                                           href="{{route('admin.products.list',['seller', 'status'=>'0'])}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span--}}
+{{--                                                class="text-truncate">{{translate('new_Products_Requests')}} </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    @if (getWebConfig(name: 'product_wise_shipping_cost_approval')==1)--}}
+{{--                                        <li class="nav-item {{Request::is('admin/products/'.Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">--}}
+{{--                                            <a class="nav-link" title="{{translate('product_Updated_Requests')}}"--}}
+{{--                                               href="{{route('admin.products.updated-product-list')}}">--}}
+{{--                                                <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                                <span--}}
+{{--                                                    class="text-truncate">{{translate('product_Updated_Requests')}} </span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    @endif--}}
+{{--                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'/admin/products/'.Product::LIST[URI].'/seller?status=1')==1?'active':''}}">--}}
+{{--                                        <a class="nav-link"--}}
+{{--                                           title="{{translate('approved_Products')}}"--}}
+{{--                                           href="{{route('admin.products.list',['seller', 'status'=>'1'])}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span--}}
+{{--                                                class="text-truncate">{{translate('approved_Products')}}</span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item {{str_contains(url()->current().'?status='.request()->get('status'),'/admin/products/'.Product::LIST[URI].'/seller?status=2')==1?'active':''}}">--}}
+{{--                                        <a class="nav-link"--}}
+{{--                                           title="{{translate('denied_Products')}}"--}}
+{{--                                           href="{{route('admin.products.list',['seller', 'status'=>'2'])}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span--}}
+{{--                                                class="text-truncate">{{translate('denied_Products')}}</span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
                         @endif
 
                         @if(Helpers::module_permission_check('promotion_management'))
